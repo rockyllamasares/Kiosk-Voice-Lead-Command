@@ -149,12 +149,7 @@ $letters = '';
                     
                       <div class="row">
                         <div class="pl-2">
-                          <!-- change button have a + and - -->
-                          <button id="decrementBtn">-</button>
-                            <input type="number" min="1" value="0" required class="w-25 default-1" name="qty" id="qtyInput" style="width: 40px;">
-                          <button id="incrementBtn">+</button>
-                          <!-- end for change button have a + and - -->
-                          <!-- <input type="number" min="1" value="0" required class="w-25 default-1" name="qty"> -->
+                          <input type="number" min="1" value="0" required class="w-25 default-1" name="qty">
                         </div>
                          <div class="pl-3">
                           <input type="hidden" name="tblnum" value="<?php echo $tblnum; ?>">
@@ -209,21 +204,6 @@ $letters = '';
 <!-- AdminLTE for demo purposes -->
 <!--script src="template/dist/js/demo.js"></script-->
 <!-- Page specific script -->
-<!-- scritp for quantity button -->
-<script>
-  const qtyInput = document.getElementById("qtyInput");
-  const decrementBtn = document.getElementById("decrementBtn");
-  const incrementBtn = document.getElementById("incrementBtn");
-
-  decrementBtn.addEventListener("click", function() {
-    qtyInput.value = Math.max(parseInt(qtyInput.value) - 1, 1);
-  });
-  
-  incrementBtn.addEventListener("click", function() {
-    qtyInput.value = parseInt(qtyInput.value) + 1;
-  });
-</script>
-<!-- scritp for quantity button -->
 <script>
   $(function () {
     $(document).on('click', '[data-toggle="lightbox"]', function(event) {
