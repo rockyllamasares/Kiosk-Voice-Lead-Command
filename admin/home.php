@@ -88,6 +88,7 @@ include_once("header.php");
         </div>
         <!-- /.row -->
         <!-- Main row -->
+<<<<<<< HEAD
         <div class="row">
           <!-- Left col -->
           <section class="col-lg-7 connectedSortable">
@@ -350,6 +351,9 @@ include_once("header.php");
           </section>
           <!-- right col -->
         </div>
+=======
+        
+>>>>>>> develope
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
