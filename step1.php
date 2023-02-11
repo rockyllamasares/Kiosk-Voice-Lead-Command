@@ -25,10 +25,17 @@ $letters = '';
 //$voice->Speak($word);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  
   <title></title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -137,9 +144,11 @@ $letters = '';
                                       No data.
                   <?php else: ?>
                   <?php do{ ?>
+
+                    
                     <form method="post" action="step1a.php">
                       <div class="filtr-item col-sm- pt-3 pl-4" data-category="<?php echo $row['product_type']; ?>" data-sort="black sample">
-                     
+                    
                         <img src="<?php echo (!empty($row['product_pic']))? 'admin/img/'.$row['product_pic']:'img/admin.png'; ?>" width="270px" height="150px" alt="white sample"/><br>
                         <label><?php echo $row['product_name']; ?></label><br>
                         <label><?php echo '&#8369;'.$row['product_price']; ?></label>
@@ -157,15 +166,12 @@ $letters = '';
                           <button type="submit" name="update" class="btn btn-primary btn-sm">Add</button>
                         </div>
                       </div>
+                      
                     </div>
+            
                     </form>
                    <?php }while($row = $employees->fetch_assoc()) ?><?php endif; ?>
                  <?php }while($row = $cat->fetch_assoc()) ?><?php endif; ?>
-                 
-                 
-                 
-
-      
                  
                 </div>
 
