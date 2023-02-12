@@ -91,10 +91,10 @@
                       <div class="row align-items-center slider-animated-1">
                         <div class="col-lg-5 col-md-6">
                           <div class="hero-slider-content-2">
-                            <h4 class="animated">Trade-in offer</h4>
-                            <h2 class="animated fw-900">Supper value deals</h2>
-                            <h1 class="animated fw-900 text-brand">On all products</h1>
-                            <p class="animated">Save more with coupons & up to 70% off</p>
+                            <!-- <h4 class="animated">Trade-in offer</h4> -->
+                            <h3 class="animated fw-900">Kiosk with Voice Lead Command dining made easy!</h3>
+                            <h2 class="animated fw-900 text-brand">On all products</h2>
+                            
                            
                             <br>
                             <?php
@@ -123,10 +123,10 @@
                       <div class="row align-items-center slider-animated-1">
                         <div class="col-lg-5 col-md-6">
                           <div class="hero-slider-content-2">
-                            <h4 class="animated">Hot promotions</h4>
-                            <h2 class="animated fw-900">Fashion Trending</h2>
-                            <h1 class="animated fw-900 text-7">Great Collection</h1>
-                            <p class="animated">Save more with coupons & up to 20% off</p>
+                            
+                            <h3 class="animated fw-900">"The future of food ordering is here" </h3>
+                            <h2 class="animated fw-900 text-7">Speak your hunger, we'll handle the rest!</h2>
+                            
                            
                             <br>
                             <?php
