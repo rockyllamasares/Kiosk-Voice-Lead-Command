@@ -182,18 +182,23 @@ $row = $data->fetch_assoc();
               <p class="lead mb-5"><br>
                
               </p>
-            <form method="get" action="step1.php">
-                        <input type="hidden" name="tblnum" value="<?php echo $tablenum; ?>">
+           
+        <div class="row">
+            <div>
+              <form method="get" action="step1.php">
+              <input type="hidden" name="tblnum" value="<?php echo $tablenum; ?>">
                       <button type="submit" class="btn btn-success"><i class="fas fa-plus">
                               </i><small> Add Order</small></button>
-                      
-                    </form>
-                 
+              </form>
+            </div>
+            <div class="pl-3">
+              <form method="post" action="index.php">
+                <input type="hidden" name="ordernum">
+                <button type="submit" name="back" class="btn btn-warning btn-sm btn-block">Finish Order</button>
+              </form>
             </div>
           </div>
         
-     
-
     </section>
         </div>
         <!-- /.card-body -->
