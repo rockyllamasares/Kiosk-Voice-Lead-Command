@@ -96,7 +96,7 @@ include("header.php");
                   </thead>
                   <tbody>
                     <?php 
-                    $sql = "SELECT * FROM orderlist WHERE order_stat = 1";
+                    $sql = "SELECT * FROM orderlist WHERE order_stat = 0";
                     $employees = $conn->query($sql) or die($conn->error);
                     $row = $employees->fetch_assoc();
                    if($row['id'] == null): ?>
