@@ -95,7 +95,7 @@ include("header.php");
                     <?php 
                      isset($_GET['datefrom']);
                      $datefrom = $_GET['datefrom'];
-                    $sql = "SELECT * FROM orderlist WHERE date_ordered = '$datefrom' AND order_stat = 1";
+                    $sql = "SELECT * FROM orderlist WHERE date_ordered = '$datefrom' AND order_stat = 0";
                     $employees = $conn->query($sql) or die($conn->error);
                     $row = $employees->fetch_assoc();
                    if($row['id'] == null): ?>
