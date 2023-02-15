@@ -38,6 +38,7 @@ if(isset($_POST['process'])){
   <link rel="stylesheet" href="template/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="template/dist/css/adminlte.min.css">
+
 </head>
 <style type="text/css">
   
@@ -138,17 +139,15 @@ if(isset($_POST['process'])){
               <form method="post" action="step3.php">
                 <input type="hidden" name="total" value="<?php echo $total; ?>">
                 <input type="hidden" name="ordernum" value="<?php echo $ordernum; ?>">
-              <button type="submit" name="process" class="btn btn-success btn-sm btn-block">Confirm Order</button>
-            </form>
+                <button type="submit" name="process" class="btn btn-success btn-sm btn-block">Confirm Order</button>
+              </form>
             </div>
             <div class="pl-3">
-<form method="post" action="step1a.php">
-  <input type="hidden" name="ordernum" value="<?php echo $ordernum; ?>">
-              <button type="submit" name="back" class="btn btn-warning btn-sm btn-block">Back to Menu</button>
-            </form>
+              <form method="post" action="step1a.php">
+                <input type="hidden" name="ordernum" value="<?php echo $ordernum; ?>">
+                <button type="submit" name="back" class="btn btn-warning btn-sm btn-block">Back to Menu</button>
+              </form>
             </div>
-            
-            
           </div>
           
      
@@ -170,6 +169,7 @@ if(isset($_POST['process'])){
        
       </div>
     </section>
+
 <!-- jQuery -->
 <script src="template/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
