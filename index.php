@@ -91,11 +91,10 @@
                       <div class="row align-items-center slider-animated-1">
                         <div class="col-lg-5 col-md-6">
                           <div class="hero-slider-content-2">
-                            <!-- <h4 class="animated">Trade-in offer</h4> -->
+                            
                             <h3 class="animated fw-900">Kiosk with Voice Lead Command dining made easy!</h3>
                             <h2 class="animated fw-900 text-brand">On all products</h2>
-                            
-                           
+
                             <br>
                             <?php
                             if (isset($_POST['submit'])) {
@@ -126,8 +125,7 @@
                             
                             <h3 class="animated fw-900">"The future of food ordering is here" </h3>
                             <h2 class="animated fw-900 text-7">Speak your hunger, we'll handle the rest!</h2>
-                            
-                           
+
                             <br>
                             <?php
                             if (isset($_POST['submit'])) {
