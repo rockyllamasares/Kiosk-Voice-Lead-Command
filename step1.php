@@ -133,7 +133,7 @@ $letters = '';
                     $cat = $conn->query($sql) or die($conn->error);
                     $row = $cat->fetch_assoc(); 
                      if($row['id'] == null): ?>
-                                      No data.
+                                      
                   <?php else: ?>
                     <?php do{ 
                     $prod = $row['category_name'];
@@ -141,7 +141,7 @@ $letters = '';
                     $employees = $conn->query($sql) or die($conn->error);
                     $row = $employees->fetch_assoc();
                    if($row['id'] == null): ?>
-                                      No data.
+                                      
                   <?php else: ?>
                   <?php do{ ?>
 

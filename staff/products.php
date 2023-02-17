@@ -64,7 +64,7 @@ include("header.php");
               </div>
           <?php } ?>
         <div class="row">
-           <a href="addprod.php"><button class="btn btn-primary">+ Add new product</button></a>
+           <!-- <a href="addproduct.php"><button class="btn btn-primary">+ Add new product</button></a> -->
           <div class="col-12">
             <div class="card">
              
@@ -85,7 +85,7 @@ include("header.php");
                     <th>Product Type</th>
                     <th>Product Picture</th>
                     <th>Date Added</th>
-                    <th>Action</th>
+                    <!-- <th>Action</th> -->
                   </tr>
                   </thead>
                   <tbody>
@@ -103,7 +103,7 @@ include("header.php");
                     <td><?php echo $row['product_type']; ?></td>
                     <td><img src="<?php echo (!empty($row['product_pic']))? '../admin/img/'.$row['product_pic']:'img/admin.png'; ?>" width="270px" height="150px"></td>
                     <td><?php echo $row['date_added']; ?></td>
-                    <td class="text-center"><div class="row"><div><a href="editprod.php?id=<?php echo $row['id']; ?>"><button class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i><small> Edit</small></button></a></div>
+                    <!-- <td class="text-center"><div class="row"><div><a href="editprod.php?id=<?php echo $row['id']; ?>"><button class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i><small> Edit</small></button></a></div>
                     
                       <div><form action="deleteprod.php" method="post">
                       <button name="delete" class="btn btn-danger btn-sm"><i class="fas fa-trash">
@@ -112,7 +112,7 @@ include("header.php");
                       <input type="hidden" name="email" value="<?php echo $row['email']; ?>">
                       <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                     </form></div> </div>
-                    </td>
+                    </td> -->
                   </tr>
                   <?php }while($row = $employees->fetch_assoc()) ?><?php endif; ?>
                   </tbody>

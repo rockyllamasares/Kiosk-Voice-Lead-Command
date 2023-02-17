@@ -1,6 +1,6 @@
 <?php
-session_start();
 include_once("../connection/conn.php");
+
 $conn = connection();
 if(isset($_POST['submit'])){
 
@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
   $type = $_POST['type'];
   $pic = $_FILES['pic']['name'];
     if(!empty($pic)){
-      move_uploaded_file($_FILES['pic']['tmp_name'], '../admin/img/'.$pic); 
+      move_uploaded_file($_FILES['pic']['tmp_name'], 'img/'.$pic); 
     }
 
   $sql = "INSERT INTO `product`( `product_name`, `product_price`, `product_type`, `product_pic`) VALUES ('$name','$price','$type','$pic')";
@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
 
 }
 ?>
-<?php include("header.php"); ?>
+<?php include_once("header.php"); ?>
     <section class="content-header">
         <div class="row mb-2 mt-5">
           <div class="col-sm-4">
@@ -47,9 +47,16 @@ if(isset($_POST['submit'])){
                     <label>Product Type</label>
                     <select class="form-control" required="" name="type">
                       <option></option>
-                      <option>Breakfast</option>
-                      <option>Lunch</option>
-                      <option>Dinner</option>
+                      <?php 
+                    $sql = "SELECT * FROM category";
+                    $employees = $conn->query($sql) or die($conn->error);
+                    $row = $employees->fetch_assoc(); 
+                    ?>
+                  <?php do{ ?>
+                    <option>
+                      <?php echo $row['category_name']; ?> 
+                    </option>
+                    <?php }while($row = $employees->fetch_assoc()) ?>
                     </select>
                   </div>
                    <div class="form-group">
