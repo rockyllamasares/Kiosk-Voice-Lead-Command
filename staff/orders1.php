@@ -1,16 +1,6 @@
  <?php
 include_once("../connection/conn.php");
 $conn = connection();
-if(isset($_POST['unlock'])){
-
-  $id = $_POST['id'];
-
-  $sql = "UPDATE orderlist SET order_option = 'unlock' WHERE order_number = '$id'";
-  $conn->query($sql) or die ($conn->error);
-
-  header('Location: orders.php?success=Record updated successfully');
-
-}
 ?>
 <?php
 include("header.php");
@@ -38,12 +28,12 @@ include("header.php");
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Order List</h1>
+            <h1>User List</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="home.php">Home</a></li>
-              <li class="breadcrumb-item active">Order List</li>
+              <li class="breadcrumb-item active">User List</li>
             </ol>
           </div>
         </div>
@@ -52,6 +42,7 @@ include("header.php");
 
     <!-- Main content -->
     <section class="content">
+
       <div class="container-fluid">
          <?php if (isset($_GET['success'])) { ?>  
                <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -85,13 +76,11 @@ include("header.php");
               <table id="example1" class="table table-bordered table-striped pl-1">
                   <thead>
                   <tr>
-                    <th>Table Number</th>
                     <th>Order Number</th>
                     <th>Order Details</th>
                     <th>Order Quantity</th>
                     <th>Total Price</th>
-                    <th>Date Ordered</th>
-                    <!-- <th>Delete</th> -->
+                  
                   </tr>
                   </thead>
                   <tbody>
@@ -104,22 +93,11 @@ include("header.php");
                   <?php else: ?>
                   <?php do{ ?>
                   <tr>
-                    <td><small><?php echo $row['table_number']; ?></small></td>
                     <td><small><?php echo $row['order_number']; ?></small></td>
                     <td><small><?php echo $row['order_details']; ?></small></td>
                     <td><small><?php echo $row['order_quantity']; ?></small></td>
                     <td><small><?php echo $row['total_price']; ?></small></td>
-                    <td><small><?php echo $row['date_ordered']; ?></small></td>
-                    
-                    <!-- <td>
                    
-                    <br>
-                      <form action="deleteorder.php" method="post">
-                      <button name="delete" class="btn btn-danger btn-sm"><i class="fas fa-trash">
-                              </i><small> Delete</small></button>
-                      <input type="hidden" name="id" value="<?php echo $row['order_number']; ?>">
-                    </form>
-                    </td> -->
                   </tr>
                   <?php }while($row = $employees->fetch_assoc()) ?><?php endif; ?>
                   </tbody>

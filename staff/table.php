@@ -42,7 +42,7 @@ include("header.php");
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="home.php">Home</a></li>
-              <li class="breadcrumb-item active">User List</li>
+              <li class="breadcrumb-item active">tABLE List</li>
             </ol>
           </div>
         </div>
@@ -93,7 +93,7 @@ include("header.php");
                   </thead>
                   <tbody>
                     <?php 
-                    $sql = "SELECT * FROM tablenums";
+                    $sql = "SELECT * FROM tablenums WHERE status = 'taken'";
                     $employees = $conn->query($sql) or die($conn->error);
                     $row = $employees->fetch_assoc();
                    if($row['id'] == null): ?>
@@ -115,7 +115,11 @@ include("header.php");
                             
                         </div>
                         <div class="pl-5">
-                          
+                           <form action="deletetable.php" method="post">
+                      <button name="delete" class="btn btn-danger btn-sm"><i class="fas fa-trash">
+                              </i> Delete</button>
+                      <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                    </form>
                         </div>
                         
                     
