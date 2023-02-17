@@ -45,6 +45,8 @@ $letters = '';
   <!-- Theme style -->
   <link rel="stylesheet" href="template/dist/css/adminlte.min.css">
 </head>
+
+<link rel="stylesheet" href="css/index.css">
 <style type="text/css">
   
 </style>
