@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
   
   $_SESSION['login'] = $row['id'];
   $_SESSION['Role'] = $row['role'];
-  if(($_SESSION['login'] == 1) AND ($_SESSION['Role'] == 'Admin')){
+  if(($_SESSION['login']) AND ($_SESSION['Role'] == 'Admin')){
     header('Location: home.php'); 
 
   }
