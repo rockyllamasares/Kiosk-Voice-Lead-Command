@@ -136,8 +136,10 @@ $letters = '';
                                       
                   <?php else: ?>
                     <?php do{ 
+                    // $prod = $row['category_name'];
+                    // $sql = "SELECT * FROM product WHERE product_type LIKE '$prod'";
                     $prod = $row['category_name'];
-                    $sql = "SELECT * FROM product WHERE product_type LIKE '$prod'";
+                    $sql = "SELECT * FROM product WHERE product_type LIKE '$prod' AND status = 'enabled'";
                     $employees = $conn->query($sql) or die($conn->error);
                     $row = $employees->fetch_assoc();
                    if($row['id'] == null): ?>
@@ -158,7 +160,8 @@ $letters = '';
                     
                       <div class="row">
                         <div class="pl-2">
-                          <input type="number" min="1" value="0" required class="w-25 default-1" name="qty">
+                          <input type="number" min="1" value=" " required class="w-25 default-1" name="qty" placeholder="0"><br>
+                          Quantity
                         </div>
                          <div class="pl-3">
                           <input type="hidden" name="tblnum" value="<?php echo $tblnum; ?>">

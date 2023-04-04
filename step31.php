@@ -27,7 +27,22 @@ require __DIR__ . '/vendor/autoload.php';
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 
+/**
+ * Install the printer using USB printing support, and the "Generic / Text Only" driver,
+ * then share it (you can use a firewall so that it can only be seen locally).
+ *
+ * Use a WindowsPrintConnector with the share name to print.
+ *
+ * Troubleshooting: Fire up a command prompt, and ensure that (if your printer is shared as
+ * "Receipt Printer), the following commands work:
+ *
+ *  echo "Hello World" > testfile
+ *  copy testfile "\\%COMPUTERNAME%\Receipt Printer"
+ *  del testfile
+ */
 try {
+  // Enter the share name for your USB printer here
+  //$connector = null;
   $connector = new WindowsPrintConnector("POS58 Printer");
 
   /* Print a "Hello world" receipt" */
@@ -60,6 +75,15 @@ if (isset($_POST['process'])) {
 $sql = "SELECT * FROM orderlist WHERE order_number = '$ordernum'";
 $data = $conn->query($sql) or die($conn->error);
 $row = $data->fetch_assoc();
+/*if(isset($_POST['process'])){
+$txt='Your order are listed with a total price of'.$total.'pesos';
+$txt=htmlspecialchars($txt);
+$txt=rawurlencode($txt);
+$html=file_get_contents('https://translate.google.com/translate_tts?ie=UTF-8&client=gtx&q='.$txt.'&tl=en-US');
+$player="<audio hidden autoplay><source src='data:audio/mpeg;base64,".base64_encode($html)."'></audio>";
+echo $player;
+}*/
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

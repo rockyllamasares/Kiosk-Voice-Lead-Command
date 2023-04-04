@@ -84,6 +84,7 @@ include("header.php");
                     <th>Product Price</th>
                     <th>Product Type</th>
                     <th>Product Picture</th>
+                    <th>Status</th>
                     <th>Date Added</th>
                     <th>Action</th>
                   </tr>
@@ -102,13 +103,82 @@ include("header.php");
                     <td><?php echo $row['product_price']; ?></td>
                     <td><?php echo $row['product_type']; ?></td>
                     <td><img src="<?php echo (!empty($row['product_pic']))? 'img/'.$row['product_pic']:'img/admin.png'; ?>" width="270px" height="150px"></td>
+                    <td><?php echo $row['status']; ?></td>
                     <td><?php echo $row['date_added']; ?></td>
-                    <td class="text-center"><div class="row"><div><a href="editprod.php?id=<?php echo $row['id']; ?>"><button class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i><small> Edit</small></button></a></div>
+                    <td class="text-center"><div class="row pl-5"><div><a href="editprod.php?id=<?php echo $row['id']; ?>"><button class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i><small> Edit</small></button></a></div>
                     
-                      <div><form action="deleteprod.php" method="post">
+                      <div class="pl-3"><form action="deleteprod.php" method="post">
                       <button name="delete" class="btn btn-danger btn-sm"><i class="fas fa-trash">
-                              </i><small> Delete</small></button>
-                  
+                         <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                              </i><small> Delete</small>
+                      </button>
+                            </form><br>
+                      </div>
+<!-- ======================================== -->
+<div>
+<form method="post" action="update_status.php">
+  <select name="status">
+    <option></option>
+    <option value="enabled" <?php echo $product['status'] === 'enabled' ? 'selected' : ''; ?>>Enabled</option>
+    <option value="disabled" <?php echo $product['status'] === 'disabled' ? 'selected' : ''; ?>>Disabled</option>
+  </select>
+  <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
+  <span><?php echo $product['status'] ?></span>
+  <input type="submit" name="submit" class="btn btn-success btn-sm" value="Update Status">
+
+
+
+<!-- <form method="post" action="update_status.php">
+<select name="status">
+  <option value="enabled" <?php echo $product['status'] === 'enabled' ? 'selected' : ''; ?>>Enabled</option>
+  <option value="disabled" <?php echo $product['status'] === 'disabled' ? 'selected' : ''; ?>>Disabled</option>
+  <?php if ($product['status'] === 'enabled'): ?>
+    <option value="disabled" selected>Currently Enabled</option>
+  <?php else: ?>
+    <option value="enabled" selected>Currently Disabled</option>
+  <?php endif; ?>
+</select>
+<input type="hidden" name="id" value="<?php echo $product['id']; ?>">
+<input type="submit" name="submit" value="Update"> -->
+
+
+
+
+<!-- <form method="post" action="update_status.php">
+    <select name="status" <?php echo $product['status'] === 'disabled' ? 'disabled' : ''; ?>>
+        <option value="enabled" <?php echo $product['status'] === 'enabled' ? 'selected' : ''; ?>>Enabled</option>
+        <option value="disabled" <?php echo $product['status'] === 'disabled' ? 'selected' : ''; ?>>Disabled</option>
+    </select>
+    <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
+    <input type="submit" name="submit" value="Update"> -->
+
+
+<!-- <form method="post" action="update_status.php">
+  <select name="status">
+    <?php if ($product['status'] === 'enabled') { ?>
+      <option value="enabled" selected>Enabled</option>
+      <option value="disabled">Disabled</option>
+    <?php } else { ?>
+      <option value="enabled">Enabled</option>
+      <option value="disabled" selected>Disabled</option>
+    <?php } ?>
+  </select>
+  <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
+  <input type="submit" name="submit" value="Update"> -->
+
+
+
+            <!-- <form method="post" action="update_status.php">
+  <select name="status">
+    <option value="enabled" <?php echo $product['status'] === 'enabled' ? 'selected' : ''; ?>>Enabled</option>
+    <option value="disabled" <?php echo $product['status'] === 'disabled' ? 'selected' : ''; ?>>Disabled</option>
+  </select>
+  <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
+  <input type="submit" name="submit" value="Update"> -->
+
+
+
+<!-- ======================== -->
                       <input type="hidden" name="email" value="<?php echo $row['email']; ?>">
                       <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                     </form></div> </div>

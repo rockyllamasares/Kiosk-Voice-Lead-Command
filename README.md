@@ -1,3 +1,3 @@
 # Kiosk-Voice-Lead-Command
 # final capstone project
-# have a staff and admin role
+# only admin all role
