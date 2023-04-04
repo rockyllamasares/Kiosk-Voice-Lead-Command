@@ -119,7 +119,7 @@ include("header.php");
                     <input class="form-control" type="text" name="password" required="">
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="hidden" name="role" value="staff">
+                    <input class="form-control" type="hidden" name="role" value="Admin">
                   </div>
                    <div class="card-footer">
                   <button type="submit" name="submit" class="btn btn-primary">Submit</button>

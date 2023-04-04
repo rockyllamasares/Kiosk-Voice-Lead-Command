@@ -1,12 +1,12 @@
- <?php
+<?php
 include_once("../connection/conn.php");
 $conn = connection();
-if(isset($_POST['unlock'])){
+if (isset($_POST['unlock'])) {
 
   $id = $_POST['id'];
 
   $sql = "UPDATE orderlist SET order_option = 'unlock' WHERE order_number = '$id'";
-  $conn->query($sql) or die ($conn->error);
+  $conn->query($sql) or die($conn->error);
 
   header('Location: orders.php?success=Record updated successfully');
 
@@ -17,11 +17,13 @@ include("header.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../template/plugins/fontawesome-free/css/all.min.css">
   <!-- DataTables -->
@@ -53,28 +55,28 @@ include("header.php");
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-         <?php if (isset($_GET['success'])) { ?>  
-               <div class="alert alert-success alert-dismissible fade show" role="alert">
-               <?php echo $_GET['success']; ?>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-          <?php } ?>
-          <?php if (isset($_GET['error'])) { ?>  
-               <div class="alert alert-danger alert-dismissible fade show" role="alert">
-               <?php echo $_GET['error']; ?>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-          <?php } ?>
+        <?php if (isset($_GET['success'])) { ?>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo $_GET['success']; ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <?php } ?>
+        <?php if (isset($_GET['error'])) { ?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?php echo $_GET['error']; ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <?php } ?>
         <div class="row">
           <div class="col-12">
             <div class="card">
-             
+
               <!-- /.card-header -->
-            
+
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -82,48 +84,58 @@ include("header.php");
             <div class="card">
               <!-- /.card-header -->
               <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped pl-1">
+                <table id="example1" class="table table-bordered table-striped pl-1">
                   <thead>
-                  <tr>
-                    <th>Table Number</th>
-                    <th>Order Number</th>
-                    <th>Order Details</th>
-                    <th>Order Quantity</th>
-                    <th>Total Price</th>
-                    <th>Date Ordered</th>
-                    <th>Delete</th>
-                  </tr>
+                    <tr>
+                      <th>Table Number</th>
+                      <th>Order Number</th>
+                      <th>Order Details</th>
+                      <th>Order Quantity</th>
+                      <th>Total Price</th>
+                      <th>Date Ordered</th>
+                      <th>Status</th>
+                    </tr>
                   </thead>
                   <tbody>
-                    <?php 
-                    $sql = "SELECT * FROM orderlist WHERE order_stat = 0";
+                    <?php
+                    $sql = "SELECT * FROM orderlist WHERE order_stat = 1";
                     $employees = $conn->query($sql) or die($conn->error);
                     $row = $employees->fetch_assoc();
-                   if($row['id'] == null): ?>
-                                      
-                  <?php else: ?>
-                  <?php do{ ?>
-                  <tr>
-                    <td><small><?php echo $row['table_number']; ?></small></td>
-                    <td><small><?php echo $row['order_number']; ?></small></td>
-                    <td><small><?php echo $row['order_details']; ?></small></td>
-                    <td><small><?php echo $row['order_quantity']; ?></small></td>
-                    <td><small><?php echo $row['total_price']; ?></small></td>
-                    <td><small><?php echo $row['date_ordered']; ?></small></td>
-                    
-                    <td>
-                   
-                    <br>
-                      <form action="deleteorder.php" method="post">
-                      <button name="delete" class="btn btn-danger btn-sm"><i class="fas fa-trash">
-                              </i><small> Delete</small></button>
-                      <input type="hidden" name="id" value="<?php echo $row['order_number']; ?>">
-                    </form>
-                    </td>
-                  </tr>
-                  <?php }while($row = $employees->fetch_assoc()) ?><?php endif; ?>
+                    if ($row['id'] == null): ?>
+
+                    <?php else: ?>
+                      <?php do { ?>
+                        <tr>
+                          <td><small>
+                              <?php echo $row['table_number']; ?>
+                            </small></td>
+                          <td><small>
+                              <?php echo $row['order_number']; ?>
+                            </small></td>
+                          <td><small>
+                              <?php echo $row['order_details']; ?>
+                            </small></td>
+                          <td><small>
+                              <?php echo $row['order_quantity']; ?>
+                            </small></td>
+                          <td><small>
+                              <?php echo $row['total_price']; ?>
+                            </small></td>
+                          <td><small>
+                              <?php echo $row['date_ordered']; ?>
+                            </small></td>
+                          <td>
+                            <form action="deleteorder.php" method="post">
+                              <button type="submit" name="delete" class="btn btn-success btn-sm">
+                                <i class="fas fa-check"></i><small> Done</small>
+                                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                              </button>
+                            </form>
+                          </td>
+                        <?php } while ($row = $employees->fetch_assoc()) ?>
+                      <?php endif; ?>
                   </tbody>
-                 
+
                 </table>
               </div>
               <!-- /.card-body -->
@@ -151,47 +163,48 @@ include("header.php");
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+  </div>
+  <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="../template/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables  & Plugins -->
-<script src="../template/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../template/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../template/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../template/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../template/plugins/jszip/jszip.min.js"></script>
-<script src="../template/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="../template/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="../template/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="../template/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="../template/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../template/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../template/dist/js/demo.js"></script>
-<!-- Page specific script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+  <!-- jQuery -->
+  <script src="../template/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- DataTables  & Plugins -->
+  <script src="../template/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="../template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="../template/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="../template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="../template/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="../template/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="../template/plugins/jszip/jszip.min.js"></script>
+  <script src="../template/plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="../template/plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="../template/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="../template/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="../template/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../template/dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="../template/dist/js/demo.js"></script>
+  <!-- Page specific script -->
+  <script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
     });
-  });
-</script>
-</body>
+  </script>
+  </body>
+
 </html>
